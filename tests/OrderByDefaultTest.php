@@ -2,9 +2,9 @@
 
 namespace Kblais\LaravelHelpers\Tests;
 
+use Illuminate\Database\Eloquent\Model;
 use Kblais\LaravelHelpers\Eloquent\OrderByDefaultOrderInterface;
 use Kblais\LaravelHelpers\Eloquent\OrderByDefaultOrderTrait;
-use Kblais\LaravelHelpers\Tests\Models\User;
 
 /**
  * @internal
@@ -15,7 +15,7 @@ final class OrderByDefaultTest extends TestCase
 {
     public function testModelHasDefaultDefaultOrder()
     {
-        $user = new class() extends User implements OrderByDefaultOrderInterface {
+        $user = new class() extends Model implements OrderByDefaultOrderInterface {
             use OrderByDefaultOrderTrait;
 
             protected $table = 'user';
@@ -28,7 +28,7 @@ final class OrderByDefaultTest extends TestCase
 
     public function testRemoveDefaultOrder()
     {
-        $user = new class() extends User implements OrderByDefaultOrderInterface {
+        $user = new class() extends Model implements OrderByDefaultOrderInterface {
             use OrderByDefaultOrderTrait;
 
             protected $table = 'user';
@@ -41,7 +41,7 @@ final class OrderByDefaultTest extends TestCase
 
     public function testModelHasCustomDefaultOrder()
     {
-        $user = new class() extends User implements OrderByDefaultOrderInterface {
+        $user = new class() extends Model implements OrderByDefaultOrderInterface {
             use OrderByDefaultOrderTrait;
 
             protected $table = 'user';
