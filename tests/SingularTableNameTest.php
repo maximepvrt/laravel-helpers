@@ -2,8 +2,8 @@
 
 namespace Kblais\LaravelHelpers\Tests;
 
-use Kblais\LaravelHelpers\Tests\Models\Post;
-use Kblais\LaravelHelpers\Tests\Models\User;
+use Illuminate\Database\Eloquent\Model;
+use Kblais\LaravelHelpers\Eloquent\SingularTableNameTrait;
 
 /**
  * @internal
@@ -25,4 +25,16 @@ final class SingularTableNameTest extends TestCase
 
         static::assertSame($post->getTable(), 'user_posts');
     }
+}
+
+class Post extends Model
+{
+    use SingularTableNameTrait;
+
+    protected $table = 'user_posts';
+}
+
+class User extends Model
+{
+    use SingularTableNameTrait;
 }

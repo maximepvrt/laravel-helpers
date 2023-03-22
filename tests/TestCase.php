@@ -2,8 +2,12 @@
 
 namespace Kblais\LaravelHelpers\Tests;
 
-use Orchestra\Testbench\TestCase as Orchestra;
+use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
-abstract class TestCase extends Orchestra
+abstract class TestCase extends OrchestraTestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+    }
 }
