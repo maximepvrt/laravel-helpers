@@ -1,6 +1,14 @@
+includes:
+    - ./vendor/larastan/larastan/extension.neon
 parameters:
-  paths:
-    - './src'
-    - './tests'
-  level: 5
-  ignoreErrors:
+    paths:
+        - src
+        - tests
+
+    # The level 8 is the highest level
+    level: 5
+
+    checkMissingIterableValueType: false
+
+    ignoreErrors:
+        - '#Call to function property_exists\(\) with \$this#'

@@ -26,12 +26,12 @@ trait OrderByDefaultOrderTrait
      */
     public static function withoutDefaultOrder(): Builder
     {
-        return with(new self())->newQueryWithoutScope(static::getOrderScope());
+        return (new self())->newQueryWithoutScope(static::getOrderScope());
     }
 
     public function getDefaultOrder(): array
     {
-        if (property_exists($this, 'defaultOrder')) {
+        if (property_exists($this, 'defaultOrder') && !empty($this->defaultOrder)) {
             return $this->defaultOrder;
         }
 
@@ -46,7 +46,7 @@ trait OrderByDefaultOrderTrait
      */
     protected static function getOrderScope(): Scope
     {
-        $defaultOrder = with(new self())->getDefaultOrder();
+        $defaultOrder = (new self())->getDefaultOrder();
 
         return new OrderByScope(
             Arr::get($defaultOrder, 'column'),

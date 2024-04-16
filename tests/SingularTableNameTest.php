@@ -5,11 +5,6 @@ namespace Kblais\LaravelHelpers\Tests;
 use Illuminate\Database\Eloquent\Model;
 use Kblais\LaravelHelpers\Eloquent\SingularTableNameTrait;
 
-/**
- * @internal
- *
- * @covers \Kblais\LaravelHelpers\Eloquent\SingularTableNameTrait
- */
 final class SingularTableNameTest extends TestCase
 {
     public function testUserModelHasSingularTableName()
