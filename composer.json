@@ -3,12 +3,12 @@
     "description": "A collection of helpers for your Laravel application.",
     "require": {
         "php": "^8.0",
-        "illuminate/database": "^8.13|^9.0|^10.0"
+        "illuminate/database": "^9.0|^10.0|^11.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^6.23|^7.0|^8.0",
+        "orchestra/testbench": "^7.0|^8.0|^9.0",
         "friendsofphp/php-cs-fixer": "^3.5",
-        "phpstan/phpstan": "^1.0"
+        "larastan/larastan": "^2.0"
     },
     "autoload": {
         "psr-4": {
@@ -21,13 +21,19 @@
         }
     },
     "scripts": {
-        "phpcs": "php-cs-fixer fix",
-        "phpunit": "phpunit --verbose --color=always",
-        "phpstan": "phpstan analyze --no-progress",
-        "test": [
-            "@phpstan",
-            "@phpunit",
-            "@phpcs"
+        "tests:cs": [
+            "@php ./vendor/bin/php-cs-fixer fix"
+        ],
+        "tests:stan": [
+            "@php ./vendor/bin/phpstan analyze"
+        ],
+        "tests:unit": [
+            "@php ./vendor/bin/phpunit --colors"
+        ],
+        "tests": [
+            "@tests:cs",
+            "@tests:stan",
+            "@tests:unit"
         ]
     },
     "license": "MIT",
